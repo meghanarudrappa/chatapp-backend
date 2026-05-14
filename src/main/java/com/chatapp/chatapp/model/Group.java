@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 import java.util.Set;
 
@@ -18,7 +18,7 @@ public class Group {
     private String creatorId; // The phone number of who made it
 
     private Set<String> members; // List of phone numbers
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private Instant createdAt =Instant.now();
     private String lastMessage;
-    private LocalDateTime lastMessageTimestamp;
+    private Instant lastMessageTimestamp;
 }

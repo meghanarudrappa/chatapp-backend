@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.mapping.Document;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.Map; // ADD THIS IMPORT
 
 @Document(collection = "group_messages")
@@ -21,7 +21,7 @@ public class GroupMessage {
     // ADD THIS FIELD TO STORE SIDE DATA
     private Map<String, String> metadata;
 
-    private LocalDateTime timestamp = LocalDateTime.now();
+    private Instant timestamp = Instant.now();
 
     private ChatMessage.MessageStatus status = ChatMessage.MessageStatus.SENT;
 }

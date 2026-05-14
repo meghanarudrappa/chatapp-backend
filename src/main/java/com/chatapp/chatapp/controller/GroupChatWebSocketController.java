@@ -23,7 +23,9 @@ public class GroupChatWebSocketController {
     @MessageMapping("/group-message")
     public void handleGroupMessage(@Payload GroupMessage message) {
         // 1. Save to MongoDB
-        message.setTimestamp(LocalDateTime.now()); // Set real time
+        if (message.getTimestamp() == null) {
+            message.setTimestamp(java.time.Instant.now());
+        }
         GroupMessage savedMsg = groupMessageService.saveMessage(message);
 
         // 2. Broadcast to all group members
